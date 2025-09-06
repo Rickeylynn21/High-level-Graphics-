@@ -15,25 +15,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#0f172a;
-      --muted:#94a3b8;
-      --text:#e2e8f0;
-      --brand:#2563eb;
-      --accent:#f43f5e;
-      --ring: 0 0 0 3px rgba(37,99,235,.35);
-      --radius: 18px;
-      --shadow: 0 20px 40px rgba(0,0,0,.35);
+      --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e2e8f0;
+      --brand:#2563eb; --accent:#f43f5e; --ring:0 0 0 3px rgba(37,99,235,.35);
+      --radius:18px; --shadow:0 20px 40px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html,body{
-      margin:0;
-      background:
+      margin:0;background:
         radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.14), transparent 60%),
         radial-gradient(1000px 600px at 110% 10%, rgba(244,63,94,.10), transparent 60%),
         var(--bg);
-      color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial
+      color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;border-radius:12px}
@@ -56,6 +48,7 @@
     .section{padding:64px 0}
     .section h2{font-size: clamp(26px,4vw,40px); margin:0 0 8px}
     .sub{color:var(--muted);margin:0 0 22px}
+    /* Before/After slider */
     .ba{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid rgba(148,163,184,.2)}
     .ba img{width:100%;height:auto;border-radius:0}
     .ba .after{position:absolute;inset:0;overflow:hidden}
@@ -73,25 +66,27 @@
     .cta-rail{display:flex;gap:12px;flex-wrap:wrap}
     @media (max-width: 900px){
       .hero{grid-template-columns:1fr}
-      .features,.pricing,.faq{grid-template-columns:1fr}
+      .features,.pricing{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <header class="container nav">
     <div class="brand">
-      <img src="high-level-graphics-logo.png" alt="High Level Graphics Logo" style="height:48px;border-radius:8px;">
+      <!-- If you don’t have a logo yet, this will just show the text -->
+      <img src="high-level-graphics-logo.png" alt="High Level Graphics Logo" style="height:48px;border-radius:8px;display:inline-block;">
       <span>Virtual Staging</span>
       <span class="badge">24–48h turnarounds</span>
     </div>
     <div class="cta-rail">
       <a class="btn outline" href="tel:5634247221">Call: 563-424-7221</a>
       <a class="btn outline" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">Email</a>
-      <a class="btn" href="#contact">Get a Quote</a>
+      <a class="btn" href="#gallery">View Before/After</a>
     </div>
   </header>
 
   <main class="container">
+    <!-- Hero -->
     <section class="hero">
       <div>
         <span class="pill">MLS-safe • Realistic • Affordable</span>
@@ -103,10 +98,11 @@
         </div>
       </div>
       <div class="card">
+        <!-- Hero slider with working external images -->
         <div class="ba" aria-label="Before and after staged room" role="region">
-          <img src="before1.jpg" alt="Before: empty living room"/>
+          <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d52?q=80&w=1600&auto=format&fit=crop" alt="Before: empty living room"/>
           <div class="after" style="width:50%">
-            <img src="after1.jpg" alt="After: staged living room"/>
+            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1600&auto=format&fit=crop" alt="After: staged living room"/>
           </div>
           <div class="handle"></div>
           <div class="knob" aria-hidden="true"></div>
@@ -114,6 +110,69 @@
       </div>
     </section>
 
+    <!-- Gallery: Before/After Sliders (all hotlinked, no uploads needed) -->
+    <section id="gallery" class="section">
+      <h2>Before / After Gallery</h2>
+      <p class="sub">Drag the handle on each image to compare.</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:22px">
+        <!-- 1 -->
+        <div class="card">
+          <div class="ba" role="region" aria-label="Living room before and after">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop" alt="Before: empty living room"/>
+            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1499914485622-a88fac536970?q=80&w=1600&auto=format&fit=crop" alt="After: staged living room"/></div>
+            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
+          </div>
+          <p class="small muted" style="margin-top:10px">Open living / dining — neutral modern</p>
+        </div>
+        <!-- 2 -->
+        <div class="card">
+          <div class="ba" role="region" aria-label="Entry stairs before and after">
+            <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1600&auto=format&fit=crop" alt="Before: entry with stairs"/>
+            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" alt="After: styled entry"/></div>
+            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
+          </div>
+          <p class="small muted" style="margin-top:10px">Entry / stairs — transitional</p>
+        </div>
+        <!-- 3 -->
+        <div class="card">
+          <div class="ba" role="region" aria-label="Bedroom before and after">
+            <img src="https://images.unsplash.com/photo-1505699268086-c01c3eb8b9fb?q=80&w=1600&auto=format&fit=crop" alt="Before: empty bedroom"/>
+            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1505692952047-1a78307da8f1?q=80&w=1600&auto=format&fit=crop" alt="After: staged bedroom"/></div>
+            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
+          </div>
+          <p class="small muted" style="margin-top:10px">Bedroom — cozy & bright</p>
+        </div>
+        <!-- 4 -->
+        <div class="card">
+          <div class="ba" role="region" aria-label="Sitting room before and after">
+            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1600&auto=format&fit=crop" alt="Before: empty sitting room"/>
+            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" alt="After: staged sitting room"/></div>
+            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
+          </div>
+          <p class="small muted" style="margin-top:10px">Sitting room — mid-century accents</p>
+        </div>
+        <!-- 5 -->
+        <div class="card">
+          <div class="ba" role="region" aria-label="Gray living room before and after A">
+            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop" alt="Before: empty gray living room"/>
+            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop" alt="After: staged gray living room"/></div>
+            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
+          </div>
+          <p class="small muted" style="margin-top:10px">Living room — light & airy</p>
+        </div>
+        <!-- 6 -->
+        <div class="card">
+          <div class="ba" role="region" aria-label="Open plan before and after">
+            <img src="https://images.unsplash.com/photo-1521782462922-9318be1f2543?q=80&w=1600&auto=format&fit=crop" alt="Before: open plan space"/>
+            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1490197415175-074fd86b1fcc?q=80&w=1600&auto=format&fit=crop" alt="After: staged open plan"/></div>
+            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
+          </div>
+          <p class="small muted" style="margin-top:10px">Open plan — bright contemporary</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
     <section id="pricing" class="section">
       <h2>Simple Pricing</h2>
       <div class="grid pricing">
@@ -123,7 +182,7 @@
           <p class="muted">Up to 10 interior photos staged for one property. 24–48h turnaround, 1 revision.</p>
           <a class="btn" href="#contact">Order Now</a>
         </div>
-        <div class="card">
+        <div class="card" style="border:2px solid rgba(37,99,235,.5)">
           <h3>Agent Pass (Monthly)</h3>
           <p class="price">$59<span class="small">/month</span></p>
           <p class="muted">Up to 8 listings per month, 10 photos each. Priority 24h, 2 revisions/listing.</p>
@@ -138,6 +197,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section">
       <h2>Get Your First Photo Free</h2>
       <form action="https://formspree.io/f/your-endpoint" method="POST">
@@ -171,7 +231,10 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Before/After slider logic for ALL .ba wrappers
     (function(){
       function initBA(slider){
         const afterWrap = slider.querySelector('.after');
@@ -187,13 +250,18 @@
         let dragging = false;
         const start = ()=>{ dragging = true; };
         const end = ()=>{ dragging = false; };
-        const move = e=>{ if(!dragging) return; const x = (e.touches? e.touches[0].clientX : e.clientX); setX(x); };
+        const move = e=>{
+          if(!dragging) return;
+          const x = (e.touches? e.touches[0].clientX : e.clientX);
+          setX(x);
+        };
         slider.addEventListener('mousedown', e=>{start(); setX(e.clientX)});
         slider.addEventListener('touchstart', e=>{start(); setX(e.touches[0].clientX)},{passive:true});
         window.addEventListener('mousemove', move);
         window.addEventListener('touchmove', move,{passive:true});
         window.addEventListener('mouseup', end);
         window.addEventListener('touchend', end);
+        // init center
         const center = slider.getBoundingClientRect().left + slider.clientWidth/2;
         setX(center);
       }
