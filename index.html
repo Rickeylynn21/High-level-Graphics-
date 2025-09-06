@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>High Level Graphics — Virtual Staging</title>
+  <meta name="description" content="Turn empty rooms into offers. Fast, affordable virtual staging for real estate agents. 24–48h turnaround, bulk discounts, and MLS-safe images." />
+  <meta property="og:title" content="High Level Graphics — Virtual Staging" />
+  <meta property="og:description" content="Get more clicks and showings with realistic virtual staging. 24–48h turnaround." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1600&auto=format&fit=crop" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f172a;
+      --muted:#94a3b8;
+      --text:#e2e8f0;
+      --brand:#2563eb;
+      --accent:#f43f5e;
+      --ring: 0 0 0 3px rgba(37,99,235,.35);
+      --radius: 18px;
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.14), transparent 60%),
+        radial-gradient(1000px 600px at 110% 10%, rgba(244,63,94,.10), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;border-radius:12px}
+    .container{width:min(1100px,92vw);margin-inline:auto}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .badge{font-size:12px;color:#0b1220;background:linear-gradient(135deg,var(--brand),var(--accent));padding:4px 10px;border-radius:999px;font-weight:700}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#fff;padding:14px 18px;border-radius:14px;font-weight:800;border:none;cursor:pointer;box-shadow:var(--shadow);transition:transform .08s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.outline{background:transparent;color:var(--text);border:1px solid rgba(148,163,184,.35);box-shadow:none}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:32px 0 14px}
+    .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.05;margin:10px 0}
+    .hero p{color:var(--muted);font-size:18px;margin:0 0 20px}
+    .pill{display:inline-flex;gap:10px;align-items:center;background:rgba(148,163,184,.15);color:#cbd5e1;border:1px solid rgba(148,163,184,.25);padding:8px 12px;border-radius:999px;font-size:13px}
+    .grid{display:grid;gap:18px}
+    .features{grid-template-columns:repeat(3,1fr);margin:40px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 60%),var(--card); border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px}
+    .muted{color:var(--muted)}
+    .section{padding:64px 0}
+    .section h2{font-size: clamp(26px,4vw,40px); margin:0 0 8px}
+    .sub{color:var(--muted);margin:0 0 22px}
+    .ba{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid rgba(148,163,184,.2)}
+    .ba img{width:100%;height:auto;border-radius:0}
+    .ba .after{position:absolute;inset:0;overflow:hidden}
+    .ba .after img{width:calc(100% + 1px)}
+    .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,var(--brand),var(--accent));box-shadow:0 0 0 1px rgba(255,255,255,.4);}
+    .knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:999px;background:#06101e;border:1px solid rgba(148,163,184,.4);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+    .knob:after{content:"⇆";font-weight:900;color:#e0e7ff}
+    .pricing{grid-template-columns:repeat(3,1fr)}
+    .price{font-size:44px;font-weight:900;letter-spacing:-.02em}
+    .small{font-size:14px;color:var(--muted)}
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:#0b1628;color:var(--text)}
+    input:focus,textarea:focus{outline:none;box-shadow:var(--ring);border-color:transparent}
+    footer{padding:40px 0;color:#97a6ba}
+    .cta-rail{display:flex;gap:12px;flex-wrap:wrap}
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .features,.pricing,.faq{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="container nav">
+    <div class="brand">
+      <img src="high-level-graphics-logo.png" alt="High Level Graphics Logo" style="height:48px;border-radius:8px;">
+      <span>Virtual Staging</span>
+      <span class="badge">24–48h turnarounds</span>
+    </div>
+    <div class="cta-rail">
+      <a class="btn outline" href="tel:5634247221">Call: 563-424-7221</a>
+      <a class="btn outline" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">Email</a>
+      <a class="btn" href="#contact">Get a Quote</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="pill">MLS-safe • Realistic • Affordable</span>
+        <h1>Turn Empty Rooms Into Offers.</h1>
+        <p>Professional virtual staging that helps your listings stand out, get more clicks, and attract more showings. Simply send your photos—we return staged images ready to upload.</p>
+        <div class="cta-rail">
+          <a class="btn" href="#pricing">See Pricing</a>
+          <a class="btn outline" href="#gallery">View Before/After</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ba" aria-label="Before and after staged room" role="region">
+          <img src="before1.jpg" alt="Before: empty living room"/>
+          <div class="after" style="width:50%">
+            <img src="after1.jpg" alt="After: staged living room"/>
+          </div>
+          <div class="handle"></div>
+          <div class="knob" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <h2>Simple Pricing</h2>
+      <div class="grid pricing">
+        <div class="card">
+          <h3>Single Listing</h3>
+          <p class="price">$20<span class="small">/listing</span></p>
+          <p class="muted">Up to 10 interior photos staged for one property. 24–48h turnaround, 1 revision.</p>
+          <a class="btn" href="#contact">Order Now</a>
+        </div>
+        <div class="card">
+          <h3>Agent Pass (Monthly)</h3>
+          <p class="price">$59<span class="small">/month</span></p>
+          <p class="muted">Up to 8 listings per month, 10 photos each. Priority 24h, 2 revisions/listing.</p>
+          <a class="btn" href="#contact">Start Subscription</a>
+        </div>
+        <div class="card">
+          <h3>Brokerage Plan</h3>
+          <p class="price">$199<span class="small">/month</span></p>
+          <p class="muted">Up to 30 listings per month for teams. Same-day options available.</p>
+          <a class="btn" href="#contact">Request Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Get Your First Photo Free</h2>
+      <form action="https://formspree.io/f/your-endpoint" method="POST">
+        <input type="hidden" name="_subject" value="Virtual Staging Quote Request" />
+        <input name="name" placeholder="Full name" required />
+        <input type="email" name="email" placeholder="you@example.com" required />
+        <input name="phone" placeholder="(563) 424-7221" />
+        <textarea name="notes" rows="4" placeholder="Rooms to stage, preferred style, timeline..."></textarea>
+        <div class="cta-rail">
+          <button class="btn" type="submit">Request Quote</button>
+          <a class="btn outline" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">Email High Level Graphics</a>
+        </div>
+        <p class="small">Or call <a href="tel:5634247221">563-424-7221</a></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <p>© <span id="y"></span> High Level Graphics — Virtual Staging</p>
+      <div class="cta-rail">
+        <a class="btn outline" href="tel:5634247221">Call</a>
+        <a class="btn" href="#contact">Start Free Photo</a>
+      </div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <a class="pill" href="tel:5634247221">📞 563-424-7221</a>
+      <a class="pill" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">✉️ highlevelgraphics28@gmail.com</a>
+      <a class="pill" href="#">⚡ High Level Graphics</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function(){
+      function initBA(slider){
+        const afterWrap = slider.querySelector('.after');
+        const handle = slider.querySelector('.handle');
+        const knob = slider.querySelector('.knob');
+        function setX(px){
+          const rect = slider.getBoundingClientRect();
+          const pct = Math.max(0, Math.min(1, (px - rect.left) / rect.width));
+          afterWrap.style.width = (pct*100) + '%';
+          handle.style.left = (pct*100) + '%';
+          knob.style.left = (pct*100) + '%';
+        }
+        let dragging = false;
+        const start = ()=>{ dragging = true; };
+        const end = ()=>{ dragging = false; };
+        const move = e=>{ if(!dragging) return; const x = (e.touches? e.touches[0].clientX : e.clientX); setX(x); };
+        slider.addEventListener('mousedown', e=>{start(); setX(e.clientX)});
+        slider.addEventListener('touchstart', e=>{start(); setX(e.touches[0].clientX)},{passive:true});
+        window.addEventListener('mousemove', move);
+        window.addEventListener('touchmove', move,{passive:true});
+        window.addEventListener('mouseup', end);
+        window.addEventListener('touchend', end);
+        const center = slider.getBoundingClientRect().left + slider.clientWidth/2;
+        setX(center);
+      }
+      document.querySelectorAll('.ba').forEach(initBA);
+    })();
+  </script>
+</body>
+</html>
