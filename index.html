@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,18 +14,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e2e8f0;
-      --brand:#2563eb; --accent:#f43f5e; --ring:0 0 0 3px rgba(37,99,235,.35);
-      --radius:18px; --shadow:0 20px 40px rgba(0,0,0,.35);
+      --bg:#0b1220;
+      --card:#0f172a;
+      --muted:#94a3b8;
+      --text:#e2e8f0;
+      --brand:#2563eb;
+      --accent:#f43f5e;
+      --ring: 0 0 0 3px rgba(37,99,235,.35);
+      --radius: 18px;
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
-    html,body{
-      margin:0;background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.14), transparent 60%),
-        radial-gradient(1000px 600px at 110% 10%, rgba(244,63,94,.10), transparent 60%),
-        var(--bg);
-      color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial
-    }
+    html,body{margin:0;background: radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.14), transparent 60%),
+                                     radial-gradient(1000px 600px at 110% 10%, rgba(244,63,94,.10), transparent 60%), var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;border-radius:12px}
     .container{width:min(1100px,92vw);margin-inline:auto}
@@ -48,7 +48,6 @@
     .section{padding:64px 0}
     .section h2{font-size: clamp(26px,4vw,40px); margin:0 0 8px}
     .sub{color:var(--muted);margin:0 0 22px}
-    /* Before/After slider */
     .ba{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid rgba(148,163,184,.2)}
     .ba img{width:100%;height:auto;border-radius:0}
     .ba .after{position:absolute;inset:0;overflow:hidden}
@@ -59,6 +58,10 @@
     .pricing{grid-template-columns:repeat(3,1fr)}
     .price{font-size:44px;font-weight:900;letter-spacing:-.02em}
     .small{font-size:14px;color:var(--muted)}
+    .faq{grid-template-columns:1fr 1fr}
+    details{background:var(--card);border:1px solid rgba(148,163,184,.15);border-radius:14px;padding:16px}
+    summary{cursor:pointer;font-weight:700}
+    details p{color:var(--muted)}
     form{display:grid;gap:12px}
     input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:#0b1628;color:var(--text)}
     input:focus,textarea:focus{outline:none;box-shadow:var(--ring);border-color:transparent}
@@ -66,27 +69,26 @@
     .cta-rail{display:flex;gap:12px;flex-wrap:wrap}
     @media (max-width: 900px){
       .hero{grid-template-columns:1fr}
-      .features,.pricing{grid-template-columns:1fr}
+      .features,.pricing,.faq{grid-template-columns:1fr}
     }
+      /* Two-up before/after layout */
+    .two-up{grid-template-columns:1fr 1fr}
+    figure{margin:0}
   </style>
 </head>
 <body>
   <header class="container nav">
     <div class="brand">
-      <!-- If you don’t have a logo yet, this will just show the text -->
-      <img src="high-level-graphics-logo.png" alt="High Level Graphics Logo" style="height:48px;border-radius:8px;display:inline-block;">
+      <img src="high-level-graphics-logo.png" alt="High Level Graphics Logo" style="height:48px;border-radius:8px;">
       <span>Virtual Staging</span>
       <span class="badge">24–48h turnarounds</span>
     </div>
     <div class="cta-rail">
       <a class="btn outline" href="tel:5634247221">Call: 563-424-7221</a>
       <a class="btn outline" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">Email</a>
-      <a class="btn" href="#gallery">View Before/After</a>
+      <a class="btn" href="#contact">Get a Quote</a>
     </div>
-  </header>
-
-  <main class="container">
-    <!-- Hero -->
+  </header>  <main class="container">
     <section class="hero">
       <div>
         <span class="pill">MLS-safe • Realistic • Affordable</span>
@@ -98,124 +100,76 @@
         </div>
       </div>
       <div class="card">
-        <!-- Hero slider with working external images -->
-        <div class="ba" aria-label="Before and after staged room" role="region">
-          <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d52?q=80&w=1600&auto=format&fit=crop" alt="Before: empty living room"/>
-          <div class="after" style="width:50%">
-            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1600&auto=format&fit=crop" alt="After: staged living room"/>
-          </div>
-          <div class="handle"></div>
-          <div class="knob" aria-hidden="true"></div>
+        <div class="grid two-up">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d52?q=80&w=1600&auto=format&fit=crop" alt="Before: empty entry room">
+            <figcaption class="small muted" style="margin-top:8px;text-align:center">Before</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" alt="After: staged entry room">
+            <figcaption class="small muted" style="margin-top:8px;text-align:center">After</figcaption>
+          </figure>
         </div>
       </div>
-    </section>
+    </section><!-- Gallery: Before/After Sliders -->
+<section id="gallery" class="section">
+  <h2>Before & After</h2>
+  <p class="sub">A simple look at what virtual staging can do for an empty entry room.</p>
+  <div class="card">
+    <div class="grid two-up">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d52?q=80&w=1600&auto=format&fit=crop" alt="Before: empty entry room">
+        <figcaption class="small muted" style="margin-top:8px;text-align:center">Before</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" alt="After: staged entry room">
+        <figcaption class="small muted" style="margin-top:8px;text-align:center">After</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    <!-- Gallery: Before/After Sliders (all hotlinked, no uploads needed) -->
-    <section id="gallery" class="section">
-      <h2>Before / After Gallery</h2>
-      <p class="sub">Drag the handle on each image to compare.</p>
-      <div class="grid" style="grid-template-columns:1fr 1fr;gap:22px">
-        <!-- 1 -->
-        <div class="card">
-          <div class="ba" role="region" aria-label="Living room before and after">
-            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop" alt="Before: empty living room"/>
-            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1499914485622-a88fac536970?q=80&w=1600&auto=format&fit=crop" alt="After: staged living room"/></div>
-            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
-          </div>
-          <p class="small muted" style="margin-top:10px">Open living / dining — neutral modern</p>
-        </div>
-        <!-- 2 -->
-        <div class="card">
-          <div class="ba" role="region" aria-label="Entry stairs before and after">
-            <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1600&auto=format&fit=crop" alt="Before: entry with stairs"/>
-            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" alt="After: styled entry"/></div>
-            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
-          </div>
-          <p class="small muted" style="margin-top:10px">Entry / stairs — transitional</p>
-        </div>
-        <!-- 3 -->
-        <div class="card">
-          <div class="ba" role="region" aria-label="Bedroom before and after">
-            <img src="https://images.unsplash.com/photo-1505699268086-c01c3eb8b9fb?q=80&w=1600&auto=format&fit=crop" alt="Before: empty bedroom"/>
-            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1505692952047-1a78307da8f1?q=80&w=1600&auto=format&fit=crop" alt="After: staged bedroom"/></div>
-            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
-          </div>
-          <p class="small muted" style="margin-top:10px">Bedroom — cozy & bright</p>
-        </div>
-        <!-- 4 -->
-        <div class="card">
-          <div class="ba" role="region" aria-label="Sitting room before and after">
-            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1600&auto=format&fit=crop" alt="Before: empty sitting room"/>
-            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" alt="After: staged sitting room"/></div>
-            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
-          </div>
-          <p class="small muted" style="margin-top:10px">Sitting room — mid-century accents</p>
-        </div>
-        <!-- 5 -->
-        <div class="card">
-          <div class="ba" role="region" aria-label="Gray living room before and after A">
-            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop" alt="Before: empty gray living room"/>
-            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=1600&auto=format&fit=crop" alt="After: staged gray living room"/></div>
-            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
-          </div>
-          <p class="small muted" style="margin-top:10px">Living room — light & airy</p>
-        </div>
-        <!-- 6 -->
-        <div class="card">
-          <div class="ba" role="region" aria-label="Open plan before and after">
-            <img src="https://images.unsplash.com/photo-1521782462922-9318be1f2543?q=80&w=1600&auto=format&fit=crop" alt="Before: open plan space"/>
-            <div class="after" style="width:50%"><img src="https://images.unsplash.com/photo-1490197415175-074fd86b1fcc?q=80&w=1600&auto=format&fit=crop" alt="After: staged open plan"/></div>
-            <div class="handle"></div><div class="knob" aria-hidden="true"></div>
-          </div>
-          <p class="small muted" style="margin-top:10px">Open plan — bright contemporary</p>
-        </div>
-      </div>
-    </section>
+<section id="pricing" class="section">
+  <h2>Simple Pricing</h2>
+  <div class="grid pricing">
+    <div class="card">
+      <h3>Single Listing</h3>
+      <p class="price">$20<span class="small">/listing</span></p>
+      <p class="muted">Up to 10 interior photos staged for one property. 24–48h turnaround, 1 revision.</p>
+      <a class="btn" href="#contact">Order Now</a>
+    </div>
+    <div class="card">
+      <h3>Agent Pass (Monthly)</h3>
+      <p class="price">$59<span class="small">/month</span></p>
+      <p class="muted">Up to 8 listings per month, 10 photos each. Priority 24h, 2 revisions/listing.</p>
+      <a class="btn" href="#contact">Start Subscription</a>
+    </div>
+    <div class="card">
+      <h3>Brokerage Plan</h3>
+      <p class="price">$199<span class="small">/month</span></p>
+      <p class="muted">Up to 30 listings per month for teams. Same‑day options available.</p>
+      <a class="btn" href="#contact">Request Quote</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="section">
-      <h2>Simple Pricing</h2>
-      <div class="grid pricing">
-        <div class="card">
-          <h3>Single Listing</h3>
-          <p class="price">$20<span class="small">/listing</span></p>
-          <p class="muted">Up to 10 interior photos staged for one property. 24–48h turnaround, 1 revision.</p>
-          <a class="btn" href="#contact">Order Now</a>
-        </div>
-        <div class="card" style="border:2px solid rgba(37,99,235,.5)">
-          <h3>Agent Pass (Monthly)</h3>
-          <p class="price">$59<span class="small">/month</span></p>
-          <p class="muted">Up to 8 listings per month, 10 photos each. Priority 24h, 2 revisions/listing.</p>
-          <a class="btn" href="#contact">Start Subscription</a>
-        </div>
-        <div class="card">
-          <h3>Brokerage Plan</h3>
-          <p class="price">$199<span class="small">/month</span></p>
-          <p class="muted">Up to 30 listings per month for teams. Same-day options available.</p>
-          <a class="btn" href="#contact">Request Quote</a>
-        </div>
-      </div>
-    </section>
+<section id="contact" class="section">
+  <h2>Get Your First Photo Free</h2>
+  <form action="https://formspree.io/f/your-endpoint" method="POST">
+    <input type="hidden" name="_subject" value="Virtual Staging Quote Request" />
+    <input name="name" placeholder="Full name" required />
+    <input type="email" name="email" placeholder="you@example.com" required />
+    <input name="phone" placeholder="(563) 424-7221" />
+    <textarea name="notes" rows="4" placeholder="Rooms to stage, preferred style, timeline..."></textarea>
+    <div class="cta-rail">
+      <button class="btn" type="submit">Request Quote</button>
+      <a class="btn outline" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">Email High Level Graphics</a>
+    </div>
+    <p class="small">Or call <a href="tel:5634247221">563-424-7221</a></p>
+  </form>
+</section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <h2>Get Your First Photo Free</h2>
-      <form action="https://formspree.io/f/your-endpoint" method="POST">
-        <input type="hidden" name="_subject" value="Virtual Staging Quote Request" />
-        <input name="name" placeholder="Full name" required />
-        <input type="email" name="email" placeholder="you@example.com" required />
-        <input name="phone" placeholder="(563) 424-7221" />
-        <textarea name="notes" rows="4" placeholder="Rooms to stage, preferred style, timeline..."></textarea>
-        <div class="cta-rail">
-          <button class="btn" type="submit">Request Quote</button>
-          <a class="btn outline" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">Email High Level Graphics</a>
-        </div>
-        <p class="small">Or call <a href="tel:5634247221">563-424-7221</a></p>
-      </form>
-    </section>
-  </main>
-
-  <footer class="container">
+  </main>  <footer class="container">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
       <p>© <span id="y"></span> High Level Graphics — Virtual Staging</p>
       <div class="cta-rail">
@@ -223,50 +177,8 @@
         <a class="btn" href="#contact">Start Free Photo</a>
       </div>
     </div>
-    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <a class="pill" href="tel:5634247221">📞 563-424-7221</a>
-      <a class="pill" href="mailto:highlevelgraphics28@gmail.com?subject=Virtual%20Staging%20Quote">✉️ highlevelgraphics28@gmail.com</a>
-      <a class="pill" href="#">⚡ High Level Graphics</a>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Before/After slider logic for ALL .ba wrappers
-    (function(){
-      function initBA(slider){
-        const afterWrap = slider.querySelector('.after');
-        const handle = slider.querySelector('.handle');
-        const knob = slider.querySelector('.knob');
-        function setX(px){
-          const rect = slider.getBoundingClientRect();
-          const pct = Math.max(0, Math.min(1, (px - rect.left) / rect.width));
-          afterWrap.style.width = (pct*100) + '%';
-          handle.style.left = (pct*100) + '%';
-          knob.style.left = (pct*100) + '%';
-        }
-        let dragging = false;
-        const start = ()=>{ dragging = true; };
-        const end = ()=>{ dragging = false; };
-        const move = e=>{
-          if(!dragging) return;
-          const x = (e.touches? e.touches[0].clientX : e.clientX);
-          setX(x);
-        };
-        slider.addEventListener('mousedown', e=>{start(); setX(e.clientX)});
-        slider.addEventListener('touchstart', e=>{start(); setX(e.touches[0].clientX)},{passive:true});
-        window.addEventListener('mousemove', move);
-        window.addEventListener('touchmove', move,{passive:true});
-        window.addEventListener('mouseup', end);
-        window.addEventListener('touchend', end);
-        // init center
-        const center = slider.getBoundingClientRect().left + slider.clientWidth/2;
-        setX(center);
-      }
-      document.querySelectorAll('.ba').forEach(initBA);
-    })();
-  </script>
-</body>
+  </footer>  <script>
+  // Set current year in footer
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script></body>
 </html>
